@@ -1,6 +1,7 @@
 package com.nlabs.trakingapp.fragments.list
 
 import android.view.*
+import android.view.View.OnClickListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -10,18 +11,20 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.nlabs.trakingapp.location_data.InstantLocation
 import com.nlabs.trakingapp.databinding.InstantLocationItemBinding
+import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class ListAdapter(): RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     /**
      * Collection with objects to construct recycleView
      */
     private var dataset = emptyList<InstantLocation>()
+    private lateinit var onItemClickListener: OnItemClickListener
 
-    class ViewHolder(val binding: InstantLocationItemBinding): RecyclerView.ViewHolder(binding.root), OnMapReadyCallback {
+    inner class ViewHolder(val binding: InstantLocationItemBinding): RecyclerView.ViewHolder(binding.root), OnMapReadyCallback, OnClickListener {
         private lateinit var map: GoogleMap
         lateinit var latLng: LatLng
 
@@ -32,6 +35,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
                 // Set the map ready callback  to receive the GoogleMap object
                 getMapAsync(this@ViewHolder)
             }
+            binding.cardView.setOnClickListener(this@ViewHolder)
         }
 
         fun setMapLocation() {
@@ -56,6 +60,15 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
             map = googleMap
             setMapLocation()
         }
+
+        override fun onClick(v: View?) {
+            val pos = adapterPosition
+            //  Take action only if the position exist in the list
+            if (pos != RecyclerView.NO_POSITION){
+                onItemClickListener.onItemClick(dataset[pos])
+                notifyItemChanged(pos)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -70,15 +83,22 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
             with(holder){
                 val numFormat = "%.6f"
                 latLng = it.getLatLng()
+                // Set item elements
                 binding.nameTextView.text = it.id.toString()
                 binding.latitudeTextView.text = String.format(numFormat, it.latitude)
                 binding.longitudeTextView.text = String.format(numFormat, it.longitude)
                 binding.altitudeTextView.text = String.format(numFormat, it.altitude)
                 binding.creationInstantTextView.text = DateTimeFormatter.ofPattern("dd/MM/yy | HH:mm").format(
                     LocalDateTime.ofInstant(it.creationInstant, ZoneId.systemDefault()))
+
+                // Set mapView
                 setMapLocation()
             }
         }
+    }
+
+    fun setOnItemClickListener(clickListener: OnItemClickListener){
+        this.onItemClickListener = clickListener
     }
 
     /**
@@ -89,4 +109,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
+    interface OnItemClickListener {
+        fun onItemClick(currentLocation:InstantLocation)
+    }
 }

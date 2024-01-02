@@ -12,6 +12,9 @@ interface InstantLocationDao {
     @Delete
     suspend fun deleteLocation(instantLocation: InstantLocation)
 
-    @Query("SELECT * FROM instantLocation_table ORDER BY id ASC")
+    @Query("DELETE FROM instantLocation_table")
+    suspend fun deleteAllData()
+
+    @Query("SELECT * FROM instantLocation_table ORDER BY id DESC")
     fun getData(): LiveData<List<InstantLocation>>
 }

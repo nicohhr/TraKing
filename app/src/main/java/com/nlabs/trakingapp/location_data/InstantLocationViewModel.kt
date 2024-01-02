@@ -24,4 +24,16 @@ class InstantLocationViewModel(application: Application): AndroidViewModel(appli
         }
     }
 
+    fun deleteLocation(instantLocation: InstantLocation){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteLocation(instantLocation)
+        }
+    }
+
+    fun deleteAllData(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.deleteAllData()
+        }
+    }
+
 }

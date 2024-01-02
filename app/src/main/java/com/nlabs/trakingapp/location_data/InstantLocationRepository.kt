@@ -10,4 +10,12 @@ class InstantLocationRepository (private val instantLocationDao: InstantLocation
         instantLocationDao.upsertLocation(instantLocation)
     }
 
+    suspend fun deleteLocation(instantLocation: InstantLocation){
+        instantLocationDao.deleteLocation(instantLocation)
+    }
+
+    suspend fun deleteAllData(){
+        instantLocationDao.deleteAllData()
+    }
+
 }
