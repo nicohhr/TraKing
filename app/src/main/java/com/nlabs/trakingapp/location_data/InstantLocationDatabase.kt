@@ -4,12 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 
 @Database(
     entities = [InstantLocation::class],
     version = 1,
     exportSchema = false // TODO("Change it to true for serialization versioning")
 )
+@TypeConverters(Converters::class)
 abstract class InstantLocationDatabase: RoomDatabase() {
 
     abstract fun dao(): InstantLocationDao
