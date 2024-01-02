@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.6"
+                android:paddingBottom="8dp">
+
+                <TextView
+                    android:id="@+id/nameTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-condensed"
+                    android:text="@string/item_title_text"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.09"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.100000024" />
+
+                <TextView
+                    android:id="@+id/creationInstantTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/creation_instant_text"
+                    app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+                <ImageView
+                    android:id="@+id/itemTypeIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:contentDescription="@string/icon_type_description"
+                    android:src="@drawable/pin_drop_48dp"
+                    app:layout_constraintBottom_toTopOf="@+id/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:tint="@color/cool_gray" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginTop="12dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/creationInstantTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/creationInstantTextView" />
+
+                <TextView
+                    android:id="@+id/latitudeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/latitude_text"
+                    app:layout_constraintStart_toStartOf="@+id/creationInstantTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+                <TextView
+                    android:id="@+id/longitudeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/longitude_text"
+                    app:layout_constraintStart_toStartOf="@+id/latitudeLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/latitudeLabel" />
+
+                <TextView
+                    android:id="@+id/altitudeLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/altitude_text"
+                    app:layout_constraintStart_toStartOf="@+id/longitudeLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/longitudeLabel" />
+
+                <TextView
+                    android:id="@+id/latitudeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text=""
+                    app:layout_constraintStart_toEndOf="@+id/longitudeLabel"
+                    app:layout_constraintTop_toTopOf="@+id/latitudeLabel" />
+
+                <TextView
+                    android:id="@+id/longitudeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/latitudeTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/latitudeTextView" />
+
+                <TextView
+                    android:id="@+id/altitudeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    app:layout_constraintStart_toStartOf="@+id/longitudeTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/longitudeTextView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4
+"
+                android:contentDescription="@string/map_view_content_description" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
