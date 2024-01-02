@@ -9,7 +9,7 @@ import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.nlabs.trakingapp.location_data.InstantLocation
+import com.nlabs.trakingapp.location_data.BaseLocation
 import com.nlabs.trakingapp.databinding.InstantLocationItemBinding
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -20,7 +20,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     /**
      * Collection with objects to construct recycleView
      */
-    private var dataset = emptyList<InstantLocation>()
+    private var dataset = emptyList<BaseLocation>()
     private lateinit var onItemClickListener: OnItemClickListener
 
     inner class ViewHolder(val binding: InstantLocationItemBinding): RecyclerView.ViewHolder(binding.root), OnMapReadyCallback, OnClickListener {
@@ -105,19 +105,19 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         this.onItemClickListener = clickListener
     }
 
-    fun getListInstance(pos: Int): InstantLocation{
+    fun getListInstance(pos: Int): BaseLocation{
         return dataset[pos]
     }
 
     /**
      * Define passed argument as RecycleView dataset
      * */
-    fun setDataset(locationList: List<InstantLocation>){
+    fun setDataset(locationList: List<BaseLocation>){
         this.dataset = locationList
         notifyDataSetChanged()
     }
 
     interface OnItemClickListener {
-        fun onItemClick(currentLocation: InstantLocation)
+        fun onItemClick(currentLocation: BaseLocation)
     }
 }

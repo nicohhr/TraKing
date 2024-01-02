@@ -7,20 +7,20 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class InstantLocationViewModel(application: Application): AndroidViewModel(application) {
+class BaseLocationViewModel(application: Application): AndroidViewModel(application) {
 
-    val getData: LiveData<List<InstantLocation>>
-    private val repository: InstantLocationRepository
+    val getData: LiveData<List<BaseLocation>>
+    private val repository: BaseLocationRepository
 
     init {
-        val locationDao = InstantLocationDatabase.getDatabase(application).dao()
-        repository = InstantLocationRepository(locationDao)
+        val locationDao = BaseLocationDatabase.getDatabase(application).dao()
+        repository = BaseLocationRepository(locationDao)
         getData = repository.getData
     }
 
-    fun upsertLocation(instantLocation: InstantLocation){
+    fun upsertLocation(baseLocation: BaseLocation){
         viewModelScope.launch(Dispatchers.IO){
-            repository.addLocation(instantLocation)
+            repository.addLocation(baseLocation)
         }
     }
 
@@ -30,9 +30,9 @@ class InstantLocationViewModel(application: Application): AndroidViewModel(appli
         }
     }
 
-    fun deleteLocation(instantLocation: InstantLocation){
+    fun deleteLocation(baseLocation: BaseLocation){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteLocation(instantLocation)
+            repository.deleteLocation(baseLocation)
         }
     }
 

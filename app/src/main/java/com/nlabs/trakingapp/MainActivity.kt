@@ -12,15 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.nlabs.trakingapp.databinding.ActivityMainBinding
-import com.nlabs.trakingapp.location_data.InstantLocation
-import com.nlabs.trakingapp.location_data.InstantLocationViewModel
+import com.nlabs.trakingapp.location_data.BaseLocation
+import com.nlabs.trakingapp.location_data.BaseLocationViewModel
 
 class MainActivity : AppCompatActivity() {
 
     // Variables
     private var clicked = false // Buttons status to set animations
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private lateinit var mInstantLocationViewModel: InstantLocationViewModel
+    private lateinit var mBaseLocationViewModel: BaseLocationViewModel
 
     // Declaring Bindings
     private lateinit var mainBinding: ActivityMainBinding
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Initializing ViewModel to communicate data to list fragment
-        mInstantLocationViewModel = ViewModelProvider(this)[InstantLocationViewModel::class.java]
+        mBaseLocationViewModel = ViewModelProvider(this)[BaseLocationViewModel::class.java]
 
         // Initializing button listeners
         mainBinding.addFloatingButton.setOnClickListener{
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         task.addOnSuccessListener {
             if (it != null) {
                 //Toast.makeText(this, "${it.latitude}, ${it.longitude}", Toast.LENGTH_SHORT).show()
-                mInstantLocationViewModel.upsertLocation(InstantLocation(it.latitude, it.longitude, it.altitude))
+                mBaseLocationViewModel.upsertLocation(BaseLocation(it.latitude, it.longitude, it.altitude))
                 Toast.makeText(this, "location added...", Toast.LENGTH_SHORT).show()
             }
         }

@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nlabs.trakingapp.databinding.FragmentLocationListBinding
-import com.nlabs.trakingapp.location_data.InstantLocation
-import com.nlabs.trakingapp.location_data.InstantLocationViewModel
+import com.nlabs.trakingapp.location_data.BaseLocation
+import com.nlabs.trakingapp.location_data.BaseLocationViewModel
 
 class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
 
     // Variables
-    private lateinit var mInstantLocationViewModel: InstantLocationViewModel
+    private lateinit var mBaseLocationViewModel: BaseLocationViewModel
     private lateinit var listAdapter: ListAdapter
     private var fragmentLocationListBinding: FragmentLocationListBinding? = null
     private val recyclerListener = RecyclerView.RecyclerListener { holder ->
@@ -41,9 +41,9 @@ class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
         }
 
         // Initializing ViewModel
-        mInstantLocationViewModel =
-            ViewModelProvider(this)[InstantLocationViewModel::class.java]
-        mInstantLocationViewModel.getData.observe(viewLifecycleOwner) { location ->
+        mBaseLocationViewModel =
+            ViewModelProvider(this)[BaseLocationViewModel::class.java]
+        mBaseLocationViewModel.getData.observe(viewLifecycleOwner) { location ->
             listAdapter.setDataset(location)
         }
 
@@ -66,7 +66,7 @@ class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val currentLocation = listAdapter.getListInstance(viewHolder.adapterPosition)
-                mInstantLocationViewModel.deleteLocation(currentLocation)
+                mBaseLocationViewModel.deleteLocation(currentLocation)
                 Toast.makeText(requireContext(), "Deleting ${currentLocation.getShortKey()}", Toast.LENGTH_SHORT).show()
             }
         }).attachToRecyclerView(fragmentLocationListBinding?.recyclerView)
@@ -81,7 +81,7 @@ class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
      * Defines action to be taken when
      * an item is selected in the recycle view.
      */
-    override fun onItemClick(currentLocation: InstantLocation) {
+    override fun onItemClick(currentLocation: BaseLocation) {
         //mInstantLocationViewModel.deleteLocation(currentLocation)
         //Toast.makeText(requireContext(), "Deleting ${currentLocation.id}", Toast.LENGTH_SHORT).show()
     }

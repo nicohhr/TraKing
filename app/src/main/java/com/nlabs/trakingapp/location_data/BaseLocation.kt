@@ -11,7 +11,7 @@ import java.time.Instant
 @Parcelize
 @Entity(tableName = "instantLocation_table")
 @TypeConverters(Converters::class)
-data class InstantLocation(
+data class BaseLocation(
     val latitude: Double,
     val longitude: Double,
     val altitude: Double,
