@@ -15,6 +15,9 @@ interface InstantLocationDao {
     @Query("DELETE FROM instantLocation_table")
     suspend fun deleteAllData()
 
-    @Query("SELECT * FROM instantLocation_table ORDER BY id DESC")
+    @Query("SELECT * FROM instantLocation_table ORDER BY creationInstant DESC")
     fun getData(): LiveData<List<InstantLocation>>
+
+    @Query("SELECT creationInstant FROM instantLocation_table WHERE creationInstant BETWEEN :startTime AND :endTime")
+    fun getRoute(startTime: Long, endTime: Long): LiveData<List<InstantLocation>>
 }

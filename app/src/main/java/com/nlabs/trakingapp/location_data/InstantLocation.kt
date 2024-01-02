@@ -15,9 +15,10 @@ data class InstantLocation(
     val latitude: Double,
     val longitude: Double,
     val altitude: Double,
-    val creationInstant: Instant = Instant.now(),
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0
+    @PrimaryKey
+    val creationInstant: Long = Instant.now().toEpochMilli(),
 ):Parcelable {
     fun getLatLng(): LatLng = LatLng(latitude, longitude)
+    fun getOnCreationInstant(): Instant = creationInstant.let { Instant.ofEpochMilli(it) }
+    fun getShortKey(n: Int = 4): String = creationInstant.toString().takeLast(n)
 }

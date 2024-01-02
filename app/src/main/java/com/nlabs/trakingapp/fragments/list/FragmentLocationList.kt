@@ -67,7 +67,7 @@ class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val currentLocation = listAdapter.getListInstance(viewHolder.adapterPosition)
                 mInstantLocationViewModel.deleteLocation(currentLocation)
-                Toast.makeText(requireContext(), "Deleting ${currentLocation.id}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Deleting ${currentLocation.getShortKey()}", Toast.LENGTH_SHORT).show()
             }
         }).attachToRecyclerView(fragmentLocationListBinding?.recyclerView)
     }
@@ -82,7 +82,7 @@ class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
      * an item is selected in the recycle view.
      */
     override fun onItemClick(currentLocation: InstantLocation) {
-        mInstantLocationViewModel.deleteLocation(currentLocation)
-        Toast.makeText(requireContext(), "Deleting ${currentLocation.id}", Toast.LENGTH_SHORT).show()
+        //mInstantLocationViewModel.deleteLocation(currentLocation)
+        //Toast.makeText(requireContext(), "Deleting ${currentLocation.id}", Toast.LENGTH_SHORT).show()
     }
 }

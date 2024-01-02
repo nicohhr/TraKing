@@ -6,6 +6,10 @@ class InstantLocationRepository (private val instantLocationDao: InstantLocation
 
     val getData: LiveData<List<InstantLocation>> = instantLocationDao.getData()
 
+    suspend fun getRoute(startTime: Long , endTime: Long){
+        instantLocationDao.getRoute(startTime, endTime)
+    }
+
     suspend fun addLocation(instantLocation: InstantLocation){
         instantLocationDao.upsertLocation(instantLocation)
     }

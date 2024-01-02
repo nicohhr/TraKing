@@ -90,12 +90,12 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
                 val numFormat = "%.6f"
                 latLng = it.getLatLng()
                 // Set item elements
-                binding.nameTextView.text = it.id.toString()
+                binding.nameTextView.text = it.getShortKey()
                 binding.latitudeTextView.text = String.format(numFormat, it.latitude)
                 binding.longitudeTextView.text = String.format(numFormat, it.longitude)
                 binding.altitudeTextView.text = String.format(numFormat, it.altitude)
                 binding.creationInstantTextView.text = DateTimeFormatter.ofPattern("dd/MM/yy | HH:mm").format(
-                    LocalDateTime.ofInstant(it.creationInstant, ZoneId.systemDefault()))
+                    LocalDateTime.ofInstant(it.getOnCreationInstant(), ZoneId.systemDefault()))
                 setMapLocation()
             }
         }

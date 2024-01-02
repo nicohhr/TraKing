@@ -24,6 +24,12 @@ class InstantLocationViewModel(application: Application): AndroidViewModel(appli
         }
     }
 
+    fun getRoute(startTime: Long, endTime: Long){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getRoute(startTime, endTime)
+        }
+    }
+
     fun deleteLocation(instantLocation: InstantLocation){
         viewModelScope.launch(Dispatchers.IO) {
             repository.deleteLocation(instantLocation)
@@ -35,5 +41,4 @@ class InstantLocationViewModel(application: Application): AndroidViewModel(appli
             repository.deleteAllData()
         }
     }
-
 }
