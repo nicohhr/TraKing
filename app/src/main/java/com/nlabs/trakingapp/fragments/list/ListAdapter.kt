@@ -11,12 +11,11 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.nlabs.trakingapp.location_data.InstantLocation
 import com.nlabs.trakingapp.databinding.InstantLocationItemBinding
-import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class ListAdapter(): RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
 
     /**
      * Collection with objects to construct recycleView
@@ -25,17 +24,24 @@ class ListAdapter(): RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     private lateinit var onItemClickListener: OnItemClickListener
 
     inner class ViewHolder(val binding: InstantLocationItemBinding): RecyclerView.ViewHolder(binding.root), OnMapReadyCallback, OnClickListener {
+
         private lateinit var map: GoogleMap
         lateinit var latLng: LatLng
 
         init {
+            // Binding map instance
             with(binding.mapView){
                 // Initialise the MapView
                 onCreate(null)
                 // Set the map ready callback  to receive the GoogleMap object
                 getMapAsync(this@ViewHolder)
             }
+
+            // Binding cardView click listener
             binding.cardView.setOnClickListener(this@ViewHolder)
+
+            // Binding swipe to delete action
+
         }
 
         fun setMapLocation() {
@@ -90,15 +96,17 @@ class ListAdapter(): RecyclerView.Adapter<ListAdapter.ViewHolder>() {
                 binding.altitudeTextView.text = String.format(numFormat, it.altitude)
                 binding.creationInstantTextView.text = DateTimeFormatter.ofPattern("dd/MM/yy | HH:mm").format(
                     LocalDateTime.ofInstant(it.creationInstant, ZoneId.systemDefault()))
-
-                // Set mapView
                 setMapLocation()
             }
         }
     }
 
-    fun setOnItemClickListener(clickListener: OnItemClickListener){
+    fun setListeners(clickListener: OnItemClickListener){
         this.onItemClickListener = clickListener
+    }
+
+    fun getListInstance(pos: Int): InstantLocation{
+        return dataset[pos]
     }
 
     /**
@@ -110,6 +118,6 @@ class ListAdapter(): RecyclerView.Adapter<ListAdapter.ViewHolder>() {
     }
 
     interface OnItemClickListener {
-        fun onItemClick(currentLocation:InstantLocation)
+        fun onItemClick(currentLocation: InstantLocation)
     }
 }
