@@ -1,4 +1,4 @@
-package com.nlabs.trakingapp.location_data
+package com.nlabs.trakingapp.data.location
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
@@ -18,6 +18,6 @@ interface InstantLocationDao {
     @Query("SELECT * FROM instantLocation_table ORDER BY creationInstant DESC")
     fun getData(): LiveData<List<InstantLocation>>
 
-    @Query("SELECT creationInstant FROM instantLocation_table WHERE creationInstant BETWEEN :startTime AND :endTime")
+    @Query("SELECT * FROM instantLocation_table WHERE creationInstant BETWEEN :startTime AND :endTime")
     fun getRoute(startTime: Long, endTime: Long): LiveData<List<InstantLocation>>
 }

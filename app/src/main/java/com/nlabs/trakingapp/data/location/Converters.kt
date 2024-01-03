@@ -1,7 +1,6 @@
-package com.nlabs.trakingapp.location_data
+package com.nlabs.trakingapp.data.location
 
 import androidx.room.TypeConverter
-import java.sql.Date
 import java.time.Instant
 
 /**

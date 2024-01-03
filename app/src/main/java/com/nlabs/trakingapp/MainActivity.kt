@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.nlabs.trakingapp.databinding.ActivityMainBinding
-import com.nlabs.trakingapp.location_data.InstantLocation
-import com.nlabs.trakingapp.location_data.InstantLocationViewModel
+import com.nlabs.trakingapp.data.location.InstantLocation
+import com.nlabs.trakingapp.data.location.InstantLocationViewModel
 
 class MainActivity : AppCompatActivity() {
 

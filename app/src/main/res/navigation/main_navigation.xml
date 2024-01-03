@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/fragmentLocationList"
-        android:name="com.nlabs.trakingapp.fragments.list.FragmentLocationList"
+        android:name="com.nlabs.trakingapp.fragments.list.LocationListFragment"
         android:label="fragment_location_list"
         tools:layout="@layout/fragment_location_list" />
 </navigation>

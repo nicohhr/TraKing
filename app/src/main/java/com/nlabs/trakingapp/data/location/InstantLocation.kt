@@ -1,4 +1,4 @@
-package com.nlabs.trakingapp.location_data
+package com.nlabs.trakingapp.data.location
 
 import android.os.Parcelable
 import androidx.room.Entity

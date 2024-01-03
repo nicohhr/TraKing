@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nlabs.trakingapp.databinding.FragmentLocationListBinding
-import com.nlabs.trakingapp.location_data.InstantLocation
-import com.nlabs.trakingapp.location_data.InstantLocationViewModel
+import com.nlabs.trakingapp.data.location.InstantLocation
+import com.nlabs.trakingapp.data.location.InstantLocationViewModel
 
-class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
+class LocationListFragment : Fragment(), ListAdapter.OnItemClickListener {
 
     // Variables
     private lateinit var mInstantLocationViewModel: InstantLocationViewModel
@@ -35,7 +35,7 @@ class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
         listAdapter = ListAdapter()
         listAdapter.setListeners(this)
         fragmentLocationListBinding!!.recyclerView.apply {
-            layoutManager = LinearLayoutManager(this@FragmentLocationList.context)
+            layoutManager = LinearLayoutManager(this@LocationListFragment.context)
             adapter = listAdapter
             setRecyclerListener(recyclerListener)
         }
