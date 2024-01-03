@@ -1,4 +1,4 @@
-package com.nlabs.trakingapp.location_data
+package com.nlabs.trakingapp.data.base_location
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

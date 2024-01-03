@@ -9,7 +9,7 @@ import com.google.android.gms.maps.MapsInitializer
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.nlabs.trakingapp.location_data.BaseLocation
+import com.nlabs.trakingapp.data.base_location.BaseLocation
 import com.nlabs.trakingapp.databinding.InstantLocationItemBinding
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -105,7 +105,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         this.onItemClickListener = clickListener
     }
 
-    fun getListInstance(pos: Int): BaseLocation{
+    fun getListInstance(pos: Int): BaseLocation {
         return dataset[pos]
     }
 

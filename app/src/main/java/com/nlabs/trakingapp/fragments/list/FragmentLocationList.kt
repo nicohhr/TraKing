@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nlabs.trakingapp.databinding.FragmentLocationListBinding
-import com.nlabs.trakingapp.location_data.BaseLocation
-import com.nlabs.trakingapp.location_data.BaseLocationViewModel
+import com.nlabs.trakingapp.data.base_location.BaseLocation
+import com.nlabs.trakingapp.data.base_location.BaseLocationViewModel
 
 class FragmentLocationList : Fragment(), ListAdapter.OnItemClickListener {
 
