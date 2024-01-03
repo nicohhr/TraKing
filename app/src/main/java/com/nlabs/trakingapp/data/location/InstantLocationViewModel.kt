@@ -15,7 +15,7 @@ class InstantLocationViewModel(application: Application): AndroidViewModel(appli
     init {
         val locationDao = InstantLocationDatabase.getDatabase(application).dao()
         repository = InstantLocationRepository(locationDao)
-        getData = repository.getData
+        getData = repository.getLocationData
     }
 
     fun upsertLocation(instantLocation: InstantLocation){
