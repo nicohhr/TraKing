@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 
 class InstantLocationRepository (private val instantLocationDao: InstantLocationDao) {
 
-    val getData: LiveData<List<InstantLocation>> = instantLocationDao.getData()
+    val getData: LiveData<List<InstantLocation>> = instantLocationDao.getLocationData()
 
     suspend fun getRoute(startTime: Long , endTime: Long){
         instantLocationDao.getRoute(startTime, endTime)

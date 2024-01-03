@@ -2,7 +2,6 @@ package com.nlabs.trakingapp
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
