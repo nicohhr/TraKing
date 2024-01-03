@@ -35,8 +35,9 @@
                     android:id="@+id/nameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="@string/item_title_text"
+                    android:text="@string/route_title_label"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -45,63 +46,52 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.100000024" />
 
-                <TextView
-                    android:id="@+id/creationInstantTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/creation_instant_text"
-                    app:layout_constraintStart_toStartOf="@+id/nameTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
-
                 <ImageView
                     android:id="@+id/itemTypeIcon"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
                     android:layout_marginEnd="12dp"
-                    android:layout_marginBottom="10dp"
                     android:contentDescription="@string/icon_type_description"
-                    android:src="@drawable/pin_drop_48dp"
+                    android:src="@drawable/baseline_alt_route_24"
                     app:layout_constraintBottom_toTopOf="@+id/divider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0"
                     app:tint="@color/cool_gray" />
 
                 <View
                     android:id="@+id/divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="18dp"
                     android:layout_marginTop="12dp"
                     android:background="?android:attr/listDivider"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/creationInstantTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/creationInstantTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
                 <TextView
                     android:id="@+id/startTimeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="@string/latitude_text"
-                    app:layout_constraintStart_toStartOf="@+id/creationInstantTextView"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/start_time_label"
+                    app:layout_constraintStart_toStartOf="@+id/nameTextView"
                     app:layout_constraintTop_toBottomOf="@+id/divider" />
 
                 <TextView
                     android:id="@+id/stopTimeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/longitude_text"
+                    android:text="@string/stop_time_label"
                     app:layout_constraintStart_toStartOf="@+id/startTimeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/startTimeLabel" />
 
                 <TextView
-                    android:id="@+id/altitudeLabel"
+                    android:id="@+id/isRecordingLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/altitude_text"
-                    app:layout_constraintStart_toStartOf="@+id/stopTimeLabel"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/status_label"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/startTimeLabel"
                     app:layout_constraintTop_toBottomOf="@+id/stopTimeLabel" />
 
                 <TextView
@@ -122,12 +112,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/startTimeTextView" />
 
                 <TextView
-                    android:id="@+id/altitudeTextView"
+                    android:id="@+id/isRecordingTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    app:layout_constraintStart_toStartOf="@+id/stopTimeTextView"
+                    app:layout_constraintStart_toStartOf="@+id/startTimeTextView"
                     app:layout_constraintTop_toBottomOf="@+id/stopTimeTextView" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.gms.maps.MapView

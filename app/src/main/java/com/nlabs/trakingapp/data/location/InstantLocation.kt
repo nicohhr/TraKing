@@ -17,6 +17,7 @@ data class InstantLocation(
     val altitude: Double,
     @PrimaryKey
     val creationInstant: Long = Instant.now().toEpochMilli(),
+    val isFromRoute: Boolean = false
 ):Parcelable {
     fun getLatLng(): LatLng = LatLng(latitude, longitude)
     fun getOnCreationInstant(): Instant = creationInstant.let { Instant.ofEpochMilli(it) }
