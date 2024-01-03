@@ -9,11 +9,14 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.android.material.tabs.TabLayout
 import com.nlabs.trakingapp.databinding.ActivityMainBinding
 import com.nlabs.trakingapp.data.location.InstantLocation
 import com.nlabs.trakingapp.data.location.InstantLocationViewModel
+import com.nlabs.trakingapp.fragments.FragmentPageAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private var clicked = false // Buttons status to set animations
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var mInstantLocationViewModel: InstantLocationViewModel
+    private lateinit var fragmentPageAdapter: FragmentPageAdapter
 
     // Declaring Bindings
     private lateinit var mainBinding: ActivityMainBinding
@@ -43,6 +47,35 @@ class MainActivity : AppCompatActivity() {
 
         // Initializing ViewModel to communicate data to list fragment
         mInstantLocationViewModel = ViewModelProvider(this)[InstantLocationViewModel::class.java]
+
+        // Initializing fragment page adapter
+        fragmentPageAdapter = FragmentPageAdapter(supportFragmentManager, lifecycle)
+        mainBinding.viewPager2.isUserInputEnabled = false
+        mainBinding.viewPager2.adapter = fragmentPageAdapter
+        mainBinding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                mainBinding.tabLayout.selectTab(mainBinding.tabLayout.getTabAt(position))
+            }
+        })
+
+        // Setting tabLayout listener
+        mainBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                if (tab != null) {
+                    mainBinding.viewPager2.currentItem = tab.position
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                //TODO("Not yet implemented")
+            }
+
+        })
 
         // Initializing button listeners
         mainBinding.addFloatingButton.setOnClickListener{

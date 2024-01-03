@@ -14,6 +14,10 @@
     <string name="add_location_btn_description">Register Location</string>
     <string name="map_view_content_description">Map View</string>
 
+    <!-- Tab Names -->
+    <string name="location_tab">Locations</string>
+    <string name="routes_tab">Routes</string>
+
     <!-- Table Names -->
     <string name="instantLocation_table">instantLocation_table</string>
     <!-- TODO: Remove or change this placeholder text -->
