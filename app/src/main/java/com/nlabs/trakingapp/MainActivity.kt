@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     // Variables
     private var clicked = false // Buttons status to set animations
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private lateinit var mInstantLocationViewModel: InstantLocationViewModel
+    lateinit var mInstantLocationViewModel: InstantLocationViewModel
     private lateinit var fragmentPageAdapter: FragmentPageAdapter
     private var isRecordingLocation = false
 
