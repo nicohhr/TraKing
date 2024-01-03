@@ -1,4 +1,4 @@
-package com.nlabs.trakingapp.fragments.list
+package com.nlabs.trakingapp.fragments.location_list
 
 import android.view.*
 import android.view.View.OnClickListener

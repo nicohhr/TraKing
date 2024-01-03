@@ -5,6 +5,7 @@
     <string name="longitude_text">Longitude:</string>
     <string name="altitude_text">Altitude:</string>
     <string name="creation_instant_text">Creation Date | Time</string>
+    <string name="locations_routes_switch">Location/Routes </string>
 
     <!-- Descriptions -->
     <string name="main_btn_description">Add…</string>
@@ -15,4 +16,6 @@
 
     <!-- Table Names -->
     <string name="instantLocation_table">instantLocation_table</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

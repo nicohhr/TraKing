@@ -3,11 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/fragmentLocationList">
+    app:startDestination="@id/locationListFragment">
 
     <fragment
-        android:id="@+id/fragmentLocationList"
-        android:name="com.nlabs.trakingapp.fragments.list.LocationListFragment"
+        android:id="@+id/locationListFragment"
+        android:name="com.nlabs.trakingapp.fragments.location_list.LocationListFragment"
         android:label="fragment_location_list"
-        tools:layout="@layout/fragment_location_list" />
+        tools:layout="@layout/fragment_location_list" >
+        <action
+            android:id="@+id/action_locationListFragment_to_routeListFragment3"
+            app:destination="@id/routeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/routeListFragment"
+        android:name="com.nlabs.trakingapp.fragments.route_list.RouteListFragment"
+        android:label="fragment_route_list"
+        tools:layout="@layout/fragment_route_list" >
+        <action
+            android:id="@+id/action_routeListFragment_to_locationListFragment"
+            app:destination="@id/locationListFragment" />
+    </fragment>
 </navigation>

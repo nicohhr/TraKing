@@ -64,4 +64,5 @@
         app:layout_constraintBottom_toTopOf="@+id/addRouteFloatingButton"
         app:layout_constraintEnd_toEndOf="@+id/addRouteFloatingButton"
         app:srcCompat="@drawable/baseline_add_location_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
