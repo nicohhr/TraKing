@@ -18,7 +18,7 @@ class RouteViewModel(application: Application): AndroidViewModel(application) {
         getData = repository.getRoutesData
     }
 
-    fun upsertLocation(route: Route){
+    fun upsertRoute(route: Route){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addRoute(route)
         }

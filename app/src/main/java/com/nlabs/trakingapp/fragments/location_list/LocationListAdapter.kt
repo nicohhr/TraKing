@@ -15,7 +15,7 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class LocationListAdapter: RecyclerView.Adapter<LocationListAdapter.ViewHolder>() {
 
     /**
      * Collection with objects to construct recycleView

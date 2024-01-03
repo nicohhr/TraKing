@@ -14,14 +14,14 @@ import com.nlabs.trakingapp.databinding.FragmentLocationListBinding
 import com.nlabs.trakingapp.data.location.InstantLocation
 import com.nlabs.trakingapp.data.location.InstantLocationViewModel
 
-class LocationListFragment : Fragment(), ListAdapter.OnItemClickListener {
+class LocationListFragment : Fragment(), LocationListAdapter.OnItemClickListener {
 
     // Variables
     private lateinit var mInstantLocationViewModel: InstantLocationViewModel
-    private lateinit var listAdapter: ListAdapter
+    private lateinit var listAdapter: LocationListAdapter
     private var fragmentLocationListBinding: FragmentLocationListBinding? = null
     private val recyclerListener = RecyclerView.RecyclerListener { holder ->
-        val mapHolder = holder as ListAdapter.ViewHolder
+        val mapHolder = holder as LocationListAdapter.ViewHolder
         mapHolder.clearView()
     }
 
@@ -32,7 +32,7 @@ class LocationListFragment : Fragment(), ListAdapter.OnItemClickListener {
 
         // Initializing RecycleView
         fragmentLocationListBinding = FragmentLocationListBinding.inflate(inflater, container, false)
-        listAdapter = ListAdapter()
+        listAdapter = LocationListAdapter()
         listAdapter.setListeners(this)
         fragmentLocationListBinding!!.recyclerView.apply {
             layoutManager = LinearLayoutManager(this@LocationListFragment.context)
