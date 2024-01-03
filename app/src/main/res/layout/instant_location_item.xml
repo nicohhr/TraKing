@@ -80,7 +80,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/creationInstantTextView" />
 
                 <TextView
-                    android:id="@+id/startTimeLabel"
+                    android:id="@+id/latitudeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
@@ -89,45 +89,45 @@
                     app:layout_constraintTop_toBottomOf="@+id/divider" />
 
                 <TextView
-                    android:id="@+id/stopTimeLabel"
+                    android:id="@+id/longitudeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/longitude_text"
-                    app:layout_constraintStart_toStartOf="@+id/startTimeLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/startTimeLabel" />
+                    app:layout_constraintStart_toStartOf="@+id/latitudeLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/latitudeLabel" />
 
                 <TextView
                     android:id="@+id/altitudeLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/altitude_text"
-                    app:layout_constraintStart_toStartOf="@+id/stopTimeLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/stopTimeLabel" />
+                    app:layout_constraintStart_toStartOf="@+id/longitudeLabel"
+                    app:layout_constraintTop_toBottomOf="@+id/longitudeLabel" />
 
                 <TextView
-                    android:id="@+id/startTimeTextView"
+                    android:id="@+id/latitudeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text=""
-                    app:layout_constraintStart_toEndOf="@+id/stopTimeLabel"
-                    app:layout_constraintTop_toTopOf="@+id/startTimeLabel" />
+                    app:layout_constraintStart_toEndOf="@+id/longitudeLabel"
+                    app:layout_constraintTop_toTopOf="@+id/latitudeLabel" />
 
                 <TextView
-                    android:id="@+id/stopTimeTextView"
+                    android:id="@+id/longitudeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    app:layout_constraintStart_toStartOf="@+id/startTimeTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/startTimeTextView" />
+                    app:layout_constraintStart_toStartOf="@+id/latitudeTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/latitudeTextView" />
 
                 <TextView
                     android:id="@+id/altitudeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=""
-                    app:layout_constraintStart_toStartOf="@+id/stopTimeTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/stopTimeTextView" />
+                    app:layout_constraintStart_toStartOf="@+id/longitudeTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/longitudeTextView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.gms.maps.MapView

@@ -1,6 +1,8 @@
 package com.nlabs.trakingapp
 
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -17,6 +19,7 @@ import com.nlabs.trakingapp.databinding.ActivityMainBinding
 import com.nlabs.trakingapp.data.location.InstantLocation
 import com.nlabs.trakingapp.data.location.InstantLocationViewModel
 import com.nlabs.trakingapp.fragments.FragmentPageAdapter
+import com.nlabs.trakingapp.service.location.LocationService
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var mInstantLocationViewModel: InstantLocationViewModel
     private lateinit var fragmentPageAdapter: FragmentPageAdapter
+    private var isRecordingLocation = false
 
     // Declaring Bindings
     private lateinit var mainBinding: ActivityMainBinding
@@ -37,6 +41,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize permission for route tracking
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(
+                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                android.Manifest.permission.ACCESS_FINE_LOCATION
+            ),
+            0
+        )
 
         // Initialize binding instances
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -84,6 +98,23 @@ class MainActivity : AppCompatActivity() {
 
         mainBinding.addRouteFloatingButton.setOnClickListener {
             addBtnAnimation()
+            if (!isRecordingLocation){
+                Intent(applicationContext, LocationService::class.java).apply {
+                    action = LocationService.ACTION_START
+                    startService(this)
+                    Toast.makeText(this@MainActivity, "TraKing Started", Toast.LENGTH_SHORT).show()
+                    isRecordingLocation = !isRecordingLocation
+                }
+                mainBinding.addRouteFloatingButton.setBackgroundResource(R.color.red)
+            } else {
+                Intent(applicationContext, LocationService::class.java).apply {
+                    action = LocationService.ACTION_STOP
+                    startService(this)
+                    Toast.makeText(this@MainActivity, "TraKing Stopped", Toast.LENGTH_SHORT).show()
+                    isRecordingLocation = !isRecordingLocation
+                }
+                mainBinding.addRouteFloatingButton.setBackgroundResource(R.color.green)
+            }
         }
 
         mainBinding.addLocationFloatingButton.setOnClickListener {
